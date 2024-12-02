@@ -8,16 +8,10 @@ for i in range(len(list_of_nums)):
     left_list.append(line[0])
     right_list.append(line[3])
 
-similarity_score = 0
+occurences = {}
 
-for i in range(len(left_list)):
-    left_num = int(left_list[i])
-    occurences = 0
-    for j in range(len(right_list)):
-        right_num = int(right_list[j])
-        if left_num == right_num:
-            occurences += 1
+for num in right_list:
+    num = int(num)
+    occurences[num] = occurences.get(num, 0) + 1
 
-    similarity_score += (left_num * occurences)
-
-print(similarity_score)
+print(sum(int(num)*occurences.get(int(num), 0) for num in left_list))
