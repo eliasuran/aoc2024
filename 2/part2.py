@@ -28,5 +28,6 @@ def remove_one_and_check_is_safe(line):
         new_line.pop(i)
         if is_safe(new_line):
             return True
+    return False
 
-print(sum(1 for line in input if remove_one_and_check_is_safe(line.split())))
+print(sum(remove_one_and_check_is_safe(line.split()) for line in input))
